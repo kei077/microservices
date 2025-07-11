@@ -1,0 +1,21 @@
+### Currency Exchange Service
+
+GET http://localhost:8000/currency-exchange/from/USD/to/INR
+
+### Currency Conversion Service
+
+GET http://localhost:8100/currency-conversion/from/USD/to/INR/quantity/10
+###
+GET http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+### Eureka
+GET http://localhost:8761/
+
+### API GATEWAY
+
+GET http://localhost:8765/CURRENCY-EXCHANGE-SERVICE/currency-exchange/from/USD/to/INR
+###
+GET http://localhost:8765/CURRENCY-CONVERSION-SERVICE/currency-conversion/from/USD/to/INR/quantity/10
+
+
+
