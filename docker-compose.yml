@@ -1,7 +1,7 @@
 
 services:
   currency-exchange:
-    image: kei077/mmv2-currency-exchange-service:0.0.1-SNAPSHOT
+    image: in28min/mmv2-currency-exchange-service:0.0.1-SNAPSHOT
     ports:
       - "8000:8000"
     networks:
@@ -10,10 +10,10 @@ services:
       - naming-server
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE : http://naming-server:8761/eureka
-      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
-      
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411
+
   currency-conversion:
-    image: kei077/mmv2-currency-conversion-service:0.0.1-SNAPSHOT
+    image: in28min/mmv2-currency-conversion-service:0.0.1-SNAPSHOT
     ports:
       - "8100:8100"
     networks:
@@ -22,17 +22,17 @@ services:
       - naming-server
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE : http://naming-server:8761/eureka
-      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411
 
   naming-server:
-    image: kei077/mmv2-naming-server:0.0.1-SNAPSHOT
+    image: in28min/mmv2-naming-server:0.0.1-SNAPSHOT
     ports:
       - "8761:8761"
     networks:
       - currency-network
 
   api-gateway:
-    image: kei077/mmv2-api-gateway:0.0.1-SNAPSHOT
+    image: in28min/mmv2-api-gateway:0.0.1-SNAPSHOT
     ports:
       - "8765:8765"
     networks:
@@ -41,7 +41,7 @@ services:
       - naming-server
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
-      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411
 
   zipkin-server:
     image: openzipkin/zipkin:2.23
